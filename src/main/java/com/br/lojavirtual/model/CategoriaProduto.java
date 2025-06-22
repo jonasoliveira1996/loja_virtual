@@ -1,6 +1,7 @@
 package com.br.lojavirtual.model;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,10 +9,11 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "marca_produto")
+@Table(name = "categoria_produto")
 @Getter
 @Setter
-public class MarcaProduto implements Serializable {
+@EqualsAndHashCode
+public class CategoriaProduto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -20,7 +22,6 @@ public class MarcaProduto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
-    private String nomeDesc;
-
+    @Column(name = "nome_desc", nullable = false)
+    private  String nomeDesc;
 }

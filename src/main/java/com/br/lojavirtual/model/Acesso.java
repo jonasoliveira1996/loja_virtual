@@ -3,15 +3,15 @@ package com.br.lojavirtual.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serial;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "marca_produto")
+@Table(name = "acesso")
 @Getter
 @Setter
-public class MarcaProduto implements Serializable {
+public class Acesso implements GrantedAuthority {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -19,8 +19,10 @@ public class MarcaProduto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @Column(nullable = false)
-    private String nomeDesc;
-
+    private String descricao; /*Acesso ex: ROLE_ADMIN ou ROLE_SECRETARIO*/
+    @Override
+    public String getAuthority() {
+        return this.descricao;
+    }
 }

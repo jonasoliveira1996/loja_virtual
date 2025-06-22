@@ -5,22 +5,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serial;
-import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(name = "marca_produto")
+@Table(name = "pessoa_fisica")
 @Getter
 @Setter
-public class MarcaProduto implements Serializable {
+public class PessoaFisica extends  Pessoa{
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(nullable = false)
-    private String nomeDesc;
-
+    private String cpf;
+    @Temporal(TemporalType.DATE)
+    private Date dataNascimento;
 }
